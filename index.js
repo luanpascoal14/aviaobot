@@ -3,8 +3,6 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const moment = require('moment');
 const config = require('./config.json');
-const ma = require('./manutencao.json');
-
 const ytdl = require('ytdl-core');
 const queue = new Map();
 
