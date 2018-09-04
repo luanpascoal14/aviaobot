@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const moment = require('moment');
 const config = require('./config.json');
+const ma = require('./manutencao.json');
 
 const ytdl = require('ytdl-core');
 const queue = new Map();
@@ -96,6 +97,74 @@ bot.on('message', async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(commandfile) commandfile.run(bot,message,args);
 
+    /*if(ma[cmd].manutencao === 'false') return message.reply('Comando em Manutenção!');
+
+    if(message.content.startsWith(prefix + 'manu')){
+        if(message.author.id !== "364241967388950531") return;
+        const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
+        if(!ma[args[1]]){
+        ma[args[1]] = {
+            manutencao: false
+        };
+        }
+    
+        if(!args[0]) {
+        let desc1 = new Discord.RichEmbed()
+        .setTitle("Ops!")
+        .setColor(randomColor)
+        .setDescription('Você quer tira ou colocar um comando em manutenção?')
+        .setFooter(`Digitado por ${message.author.tag}`, message.author.avatarURL);
+    
+        message.channel.send(desc1);
+        } else {
+        if(args[0] = "on") {
+            if(args[1]) {
+            let manutencao = ma[args[1]].manutencao;
+                manutencao = ""
+                manutencao = true
+    
+    
+                let desc2 = new Discord.RichEmbed()
+                .setTitle("Comando em manutenção!")
+                .setColor(randomColor)
+                .setDescription(`Agora o comando ${args[1]} está em manuntenção`)
+                .setFooter(`Comando desativado por ${message.author.tag}`, message.author.avatarURL);
+    
+                message.channel.send(desc2);
+            } else {
+                let desc3 = new Discord.RichEmbed()
+                .setTitle("Ops!")
+                .setColor(randomColor)
+                .setDescription(`Escreva alguma comando para eu colocar ele em manutenção!`)
+                .setFooter(`Digitado por ${message.author.tag}`, message.author.avatarURL);
+    
+                message.channel.send(desc3);
+            }
+        }else if(args[0] = "off") {
+            if(args[1]) {
+                ma[args[1]].manutencao = ""
+                ma[args[1]].manutencao = false
+    
+    
+                let desc4 = new Discord.RichEmbed()
+                .setTitle("Comando tirado da manutenção!")
+                .setColor(randomColor)
+                .setDescription(`Agora o comando ${args[1]} saiu da manuntenção`)
+                .setFooter(`Comando ativado por ${message.author.tag}`, message.author.avatarURL);
+    
+                message.channel.send(desc4);
+            } else {
+                let desc5 = new Discord.RichEmbed()
+                .setTitle("Ops!")
+                .setColor(randomColor)
+                .setDescription(`Escreva alguma comando para eu tira ele em manutenção!`)
+                .setFooter(`Digitado por ${message.author.tag}`, message.author.avatarURL);
+    
+                message.channel.send(desc5);
+            }
+        } else {}
+        }
+    }*/
 
     if (message.content.startsWith(`${prefix}eval`)) {
         if(message.author.id !== "364241967388950531") return;
